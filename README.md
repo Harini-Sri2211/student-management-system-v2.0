@@ -1,4 +1,4 @@
-# Student Management System1 v2.0
+# Student Management System v2.0
 
 ## Project Overview
 
