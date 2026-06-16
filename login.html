@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Portal Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Login Page</h2>
+
+        {% if error %}
+        <p style="color:red;">{{ error }}</p>
+        {% endif %}
+
+        <form action="/login" method="POST">
+
+            <label>Username:</label><br>
+            <input type="text" name="username" required><br><br>
+
+<label>Password:</label>
+
+<input type="password"
+       id="password"
+       name="password"
+       required>
+
+<div class="show-password">
+
+    <input type="checkbox"
+           onclick="togglePassword()">
+
+    <label>Show Password</label>
+
+</div>
+
+
+
+<script>
+function togglePassword() {
+    var x = document.getElementById("password");
+
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
+            <label>Login As:</label><br>
+
+            <select name="role">
+                <option value="student">Student</option>
+                <option value="admin">Admin</option>
+            </select><br><br>
+
+            <button type="submit">Login</button>
+
+        </form>
+
+    </div>
+    <script>
+function togglePassword() {
+
+    var x = document.getElementById("password");
+
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+    <title> Student Dashboard</title>
+</head>
+<body>
+
+<div class="container">
+    <a href="/" class="logout-btn">Logout</a>
+
+   <h2>👨‍🎓 Student Dashboard</h2>
+
+    <table border="1">
+
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+
+        {% for row in attendance %}
+
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <hr>
+
+<h2>Exam Results</h2>
+
+<table border="1">
+
+    <tr>
+        <th>Subject</th>
+        <th>Marks</th>
+    </tr>
+
+    {% for row in results %}
+
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<hr>
+
+<h2>Performance Summary</h2>
+
+<p><strong>Percentage:</strong> {{ percentage }}%</p>
+
+<p>
+    Grade:
+    <span class="grade">
+        {{ grade }}
+    </span>
+</p>
+</div>
+
+</body>
+</html>

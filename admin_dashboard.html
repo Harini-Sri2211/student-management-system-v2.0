@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+<div class="container">
+  <a href="/" class="logout-btn">Logout</a>  
+
+    <h2>🎓 Student Management System</h2>
+    <div class="cards">
+
+    <div class="card">
+        <h3>Total Records</h3>
+        <p>{{ records|length }}</p>
+    </div>
+
+</div>
+
+    <form action="/add_attendance" method="POST">
+
+    <label>Student Name:</label><br>
+    <input type="text" name="student_name" required><br><br>
+
+    <label>Date:</label><br>
+    <input type="date" name="date" required><br><br>
+
+    <label>Status:</label><br>
+    <select name="status">
+        <option value="Present">Present</option>
+        <option value="Absent">Absent</option>
+    </select><br><br>
+
+    <button type="submit">Add Attendance</button>
+
+</form>
+
+
+
+<a href="/results" class="btn">
+    Manage Results
+</a>
+    <hr>
+
+    <h3>Attendance Records</h3>
+
+    <table border="1">
+
+        <tr>
+            <th>ID</th>
+            <th>Student Name</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>action</th>
+        </tr>
+
+        {% for row in records %}
+
+        <tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+
+    <td>
+    <a href="/edit/{{ row[0] }}" class="edit-btn">
+        Edit
+    </a>
+
+    <a href="/delete/{{ row[0] }}" class="delete-btn">
+        Delete
+    </a>
+</td>
+
+</tr>
+
+        {% endfor %}
+
+    </table>
+</div>
+</body>
+</html>

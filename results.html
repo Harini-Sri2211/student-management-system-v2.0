@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Results</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Student Results</h2>
+
+    <form action="/add_result" method="POST">
+
+        <label>Student Name:</label>
+        <input type="text"
+               name="student_name"
+               required>
+
+        <label>Subject:</label>
+        <input type="text"
+               name="subject"
+               required>
+
+        <label>Marks:</label>
+        <input type="number"
+               name="marks"
+               required>
+
+        <button type="submit">
+            Add Result
+        </button>
+
+    </form>
+
+    <hr>
+
+    <h3>Result Records</h3>
+
+    <table border="1">
+
+        <tr>
+            <th>ID</th>
+            <th>Student Name</th>
+            <th>Subject</th>
+            <th>Marks</th>
+            <th>Action</th>
+        </tr>
+
+        {% for row in results %}
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+
+    <td>
+        <a href="/edit_result/{{ row[0] }}"
+           class="edit-btn">
+           Edit
+        </a>
+
+        <a href="/delete_result/{{ row[0] }}"
+           class="delete-btn">
+           Delete
+        </a>
+    </td>
+</tr>
+        
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>

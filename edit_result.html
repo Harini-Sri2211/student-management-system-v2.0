@@ -1,0 +1,19 @@
+<form action="/update_result/{{ result[0] }}" method="POST">
+
+    <input type="text"
+           name="student_name"
+           value="{{ result[1] }}">
+
+    <input type="text"
+           name="subject"
+           value="{{ result[2] }}">
+
+    <input type="number"
+           name="marks"
+           value="{{ result[3] }}">
+
+    <button type="submit">
+        Update Result
+    </button>
+
+</form>
